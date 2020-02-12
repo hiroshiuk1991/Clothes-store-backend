@@ -1,5 +1,11 @@
 class CustomersController < ApplicationController
 
+
+    def index
+        customer = Customer.all 
+        render json: customer
+    end 
+
     def show
         customer = Customer.find(params[:id])
         render json: {id: customer.id, username: customer.username, email: customer.email, password: customer.password}
@@ -24,7 +30,7 @@ class CustomersController < ApplicationController
         
         if customer and customer.authenticate(params[:customer][:password])
          
-            render json: {customer: customer.username, token:issue_token({id: customer.id}) }
+            render json: {customer_username: customer.username, customer_id: customer.id, token:issue_token({id: customer.id}) }
         else 
           
             render json:{error: 'Username/Password invalid'}, status: 403    

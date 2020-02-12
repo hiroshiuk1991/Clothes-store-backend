@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
 
   post '/login', to: 'customers#login'
-  get './validate', to: 'customers#validate'
+  get '/validate', to: 'customers#validate'
 
 end

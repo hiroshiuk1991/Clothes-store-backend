@@ -11,14 +11,16 @@ class CartsController < ApplicationController
     end 
 
     def create 
+        # byebug
         cart = Cart.create(cart_params)
+        render json: cart
     end 
 
 
     private
 
     def cart_params 
-        permit.require(:cart).permit(:user_id, :item_id)
+        params.require(:cart).permit(:customer_id, :item_id, :item_name)
     end 
 
 end
