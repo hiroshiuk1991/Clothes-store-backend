@@ -35,7 +35,7 @@ class CustomersController < ApplicationController
         
         if customer and customer.authenticate(params[:customer][:password])
          
-            render json: {customer_username: customer.username, customer_id: customer.id, token:issue_token({id: customer.id}) }
+            render json: {customer_username: customer.username, customer_id: customer.id, token:issue_token({id: customer.id})}
         else 
           
             render json:{error: 'Username/Password invalid'}, status: 403    
@@ -45,7 +45,7 @@ class CustomersController < ApplicationController
     def validate 
         customer = get_current_customer
         if customer
-            render json: {customer: customer.username, token:issue_token({id: customer.id}) }
+            render json:{customer: customer.username, token:issue_token({id: customer.id}) }
         else
             render json:{error: 'Not Authorized'}, status: 401
         end
