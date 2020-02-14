@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   post '/login', to: 'customers#login'
   get '/validate', to: 'customers#validate'
+  get '/fetchusercart', to: 'customers#fetchusercart'
 
 end

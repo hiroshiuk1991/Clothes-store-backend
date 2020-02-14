@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
 
     def create 
         customer = Customer.create(customer_params)
-        render json: customer
+        render json: {customer_username: customer.username, customer_id: customer.id, token:issue_token({id: customer.id}) }
     end 
 
     def destroy
@@ -23,6 +23,11 @@ class CustomersController < ApplicationController
     def update 
         customer = Customer.find(params[:id])
     end 
+
+    def fetchusercart
+        customer = get_current_customer
+        render json: customer.carts
+    end
 
 
     def login
