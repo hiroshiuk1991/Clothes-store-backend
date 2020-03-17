@@ -27,7 +27,7 @@ class CustomersController < ApplicationController
     def fetchusercart
         customer = get_current_customer
         cust_carts = customer.carts
-        cart_items = cust_carts.map{|cart| cart.item}
+        cart_items = cust_carts.map{|cart| [cart.item, cart]}
         render json: cart_items  
     end
 

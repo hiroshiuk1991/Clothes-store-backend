@@ -13,7 +13,11 @@ class CartsController < ApplicationController
     def create 
         # byebug
         cart = Cart.create(cart_params)
-        render json: cart
+        render json: [cart.item, cart]
+    end 
+
+    def destroy
+        Cart.destroy(params[:id])
     end 
 
 
